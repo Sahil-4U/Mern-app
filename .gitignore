@@ -1,0 +1,9 @@
+
+# for backend files
+/backend/node_modules
+/backend/.env
+
+
+
+# for frontend files
+/frontend
