@@ -56,7 +56,13 @@ app.post("/",async (req,res)=>{
 
 
 // our first get request
-app.get("/", (req, res) => {
-    return res.send('our first api');
+app.get("/", async(req, res) => {
+   try {
+    const showData=await User.find();
+   res.status(200).json(showData);
+   } catch (error) {
+    console.log(error);
+    res.status(400).json({message:error.message});
+   }
 });
 
