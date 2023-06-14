@@ -5,13 +5,15 @@ const clc = require("cli-color");
 const dotenv = require('dotenv').config();
 // here i am importing User form usermodel.js
 const User=require("./Models/usermodel");
-
+const UserRoute=require("./routes/UserRoute");
 
 
 
 const app = express();
 // To access req.body
 app.use(express.json());
+// here i am adding router to my apis
+app.use(UserRoute);
 // mongodb connection
 
 mongoose.connect(process.env.URI)
@@ -28,41 +30,4 @@ mongoose.connect(process.env.URI)
     .catch((error) => {
         console.log(error)
     })
-
-
-
-// our first api to handle post request when user singup
-app.post("/",async (req,res)=>{
-    const {name,email,age}=req.body;
-
-    try {
-        const userAdded=await User.create({
-            name:name,
-            email:email,
-            age:age
-        })
-
-        res.status(201).json(userAdded);
-    } catch (error) {
-        console.log(error)
-        res.status(400).json({error:error.message});
-    }
-})
-
-
-
-
-
-
-
-// our first get request
-app.get("/", async(req, res) => {
-   try {
-    const showData=await User.find();
-   res.status(200).json(showData);
-   } catch (error) {
-    console.log(error);
-    res.status(400).json({message:error.message});
-   }
-});
 
