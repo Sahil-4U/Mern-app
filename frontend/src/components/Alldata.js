@@ -3,12 +3,13 @@ import Badge from 'react-bootstrap/Badge';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
+import { useNavigate } from 'react-router-dom';
 
 function Alldata() {
   const [data,setData]=useState();
   const [error, setError] = useState(null);
   const [success,setSuccess]=useState(null);
-
+  const navigate=useNavigate();
   async function getData(){
     const response=await fetch('http://localhost:5000');
     const result=await response.json();
@@ -39,6 +40,9 @@ function Alldata() {
     
      }, 1500);
     }
+  }
+  const handleEdit=(id)=>{
+    navigate(`/${id}`);
   }
   useEffect(() => {
     getData();
@@ -79,7 +83,7 @@ function Alldata() {
               <Card.Subtitle className="mb-2 text-muted">{ele.age}</Card.Subtitle>
               
               <Button variant="outline-danger" className='me-2' onClick={()=>handleDelete(ele._id)}>Delete</Button>
-              <Button variant="outline-info">Edit</Button>
+              <Button variant="outline-info" onClick={()=>handleEdit(ele._id)}>Edit</Button>
             </Card.Body>
           </Card>
           ))
