@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
 import Form from 'react-bootstrap/Form';
+import Badge from 'react-bootstrap/Badge';
 
 
 function Create() {
@@ -63,7 +64,10 @@ function Create() {
           <Alert.Heading>{success}</Alert.Heading>
         </Alert>
       }
-      <h1 className='text-center m-3'>Create a user</h1>
+      
+              <h1 className='text-center m-3 '> <Badge bg="dark" className='shadow'>Create a user</Badge></h1>
+
+
       {/* This is our business logic */}
       <Form className='container my-2' onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicName">

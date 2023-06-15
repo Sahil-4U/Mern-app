@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Alert from 'react-bootstrap/Alert';
+import Badge from 'react-bootstrap/Badge';
 import { useNavigate, useParams } from 'react-router-dom';
 
 function Update() {
@@ -55,7 +56,7 @@ const handleSubmit = async (event) => {
 }
   return (
     <div className='container my-3'>
-      <h1 className='text-center'>Edit User Details</h1>
+      <h1 className='text-center'><Badge bg="info" className='shadow'>Edit User Details</Badge></h1>
       {/* here i put a alert for error catching */}
       {
         error &&
