@@ -3,6 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const clc = require("cli-color");
 const dotenv = require('dotenv').config();
+const cors=require('cors');
 // here i am importing User form usermodel.js
 const User=require("./Models/usermodel");
 const UserRoute=require("./routes/UserRoute");
@@ -10,8 +11,11 @@ const UserRoute=require("./routes/UserRoute");
 
 
 const app = express();
+
 // To access req.body
 app.use(express.json());
+// this middle ware is used for access cross-origin apis
+app.use(cors());
 // here i am adding router to my apis
 app.use(UserRoute);
 // mongodb connection
